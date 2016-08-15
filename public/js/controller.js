@@ -1,14 +1,15 @@
 (function () {
-    angular.module("FilmApp")
+    angular.module("TodoApp")
         .controller("LoginCtrl", LoginCtrl)
         .controller("SignUpCtrl", SignUpCtrl)
         .controller("TodoCtrl", TodoCtrl)
         .controller("NavigationCtrl", NavigationCtrl)
         .controller("LogoutCtrl", LogoutCtrl)
-        .controller("ProfileCtrl", ProfileCtrl);
-
-
-
+        .controller("ProfileCtrl", ProfileCtrl)
+        .controller("SettingsCtrl", SettingsCtrl)
+        .run(function(editableOptions) {
+        editableOptions.theme = 'bs3';
+    });
 
     function LoginCtrl($http, authService, $state) {
         var vm = this;
@@ -103,16 +104,44 @@
     LogoutCtrl.$inject = ["$state", "$rootScope"];
 
     function ProfileCtrl($http, dbService) {
+        console.info("dbService.currentUser", dbService.currentUser);
         var vm = this;
-        vm.email = dbService.currentUser.email;
-        vm.firstName = dbService.currentUser.first_name;
-        vm.lastName = dbService.currentUser.last_name;
-        vm.gender = dbService.currentUser.gender;
-        vm.dateOfBirth = dbService.currentUser.date_of_birth;
-        vm.country = dbService.currentUser.country;
-        vm.imgFile = dbService.currentUser.photo;
+        vm.user = {};
+        vm.user.id = dbService.currentUser.id;
+        vm.user.email = dbService.currentUser.email;
+        vm.user.firstName = dbService.currentUser.first_name;
+        vm.user.lastName = dbService.currentUser.last_name;
+        vm.user.gender = dbService.currentUser.gender;
+        vm.user.dateOfBirth = dbService.currentUser.date_of_birth;
+        vm.user.country = dbService.currentUser.country;
         
+
+        vm.editUser = function () {
+            dbService.editUser(vm.user)
+                .then(function (result) {
+                    dbService.currentUser = vm.user;
+                })
+                .catch(function (err) {
+                    console.info("err")
+                });
+        }
     }
 
     ProfileCtrl.$inject = ["$http", "dbService"];
+    
+    function SettingsCtrl($http, dbService, $state) {
+        var vm = this;
+        vm.delete = function () {
+            dbService.delete()
+                .then(function (result) {
+
+                })
+                .catch(function (err) {
+                    console.log(err);
+                });
+        }
+        
+    }
+
+    SettingsCtrl.$inject = ["$http", "dbService", "$state"];
 })();

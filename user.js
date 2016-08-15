@@ -28,6 +28,10 @@ const SAVENEWUSERSQL = "INSERT INTO users (email, password, password_original, f
                         "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 const READUSERSQL = "SELECT id, email, first_name, last_name, gender, date_of_birth, country, photo FROM users WHERE id = ?";
 const FINDUSERIDSQL = "SELECT id FROM users WHERE email = ?";
+const FINDUSERBYEMAILSQL = "SELECT id FROM users WHERE email = ?";
+const SAVEUSERSOCIALPROFILESQL = "INSERT INTO users (email, first_name, last_name, gender, photo) VALUES (?,?,?,?,?)";
+const SAVEEDITUSERSQL = "UPDATE users SET email=?, first_name=?, last_name=?, gender=?, date_of_birth=?, country=? WHERE id = ?";
+const DELETEUSERSQL = "UPDATE users SET disabled = 1 WHERE id = ?";
 //const UPLOADIMGSQL = "UPDATE users SET picture = ? WHERE user_id = ?";
 
 var makeQuery = function (sql, pool) {
@@ -59,6 +63,10 @@ User.findUser = makeQuery(FINDUSERSQL, pool);
 User.prototype.saveNewUser = makeQuery(SAVENEWUSERSQL, pool);
 User.readUser = makeQuery(READUSERSQL, pool);
 User.findUserId = makeQuery(FINDUSERIDSQL, pool);
+User.findUserByEmail = makeQuery(FINDUSERBYEMAILSQL, pool);
+User.saveUserSocialProfile = makeQuery(SAVEUSERSOCIALPROFILESQL, pool);
+User.saveEditUser = makeQuery(SAVEEDITUSERSQL, pool);
+User.deleteuser = makeQuery(DELETEUSERSQL, pool);
 //User.prototype.uploadImg = makeQuery(UPLOADIMGSQL, pool);
 
 module.exports = User;

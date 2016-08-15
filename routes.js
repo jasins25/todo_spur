@@ -3,12 +3,51 @@ var Groups = require("./groups.js");
 var User = require("./user.js");
 var Groups_Users = require("./groups_users.js");
 var watch = require("connect-ensure-login");
+var multer = require("multer");
+
+var multipart = multer();
 
 module.exports = function(app) {
     app.use("/protected", watch.ensureLoggedIn("/status/401"));
 
     app.get("/api/login/user", function (req, res) {
         res.status(202).json(req.user);
+    });
+
+    app.post("/api/user/edit", multipart.single("imgFile"), function (req, res) {
+        console.log("Edit:", req.body);
+        var dateOfBirth = req.body.dateOfBirth.substring(0, req.body.dateOfBirth.indexOf('T'));
+        var args = [
+            req.body.email,
+            req.body.firstName,
+            req.body.lastName,
+            req.body.gender,
+            dateOfBirth,
+            req.body.country,
+        //    req.file.buffer
+            req.body.id
+        ];
+        User.saveEditUser(args)
+            .then(function (result) {
+                console.log("Updated user in DB");
+                res.status(202).json(result);
+            })
+            .catch(function (err) {
+                console.log("Error Occurred", err);
+                res.status(500).end();
+            })
+    });
+
+    app.get("/api/user/delete", function (req, res) {
+        User.deleteuser([req.user.id])
+            .then(function (result) {
+                console.log("dELETED user from DB");
+                res.status(202).json(result);
+            })
+            .catch(function (err) {
+                console.log("Error Occurred", err);
+                res.status(500).end();
+            })
     });
 
     app.post("/api/group/create", function (req, res) {
@@ -20,12 +59,12 @@ module.exports = function(app) {
         var group = new Group(
             req.body.group.id,
             req.body.group.name,
-            req.user
+            req.user[0]
         );
         console.log("New Group:"+ group);
         group.saveNewGroup([
             req.body.group.name,
-            req.user
+            req.user[0]
         ]).then(function (result) {
             console.log("Saved new group in Groups schema", result);
             group.id = result.insertId;

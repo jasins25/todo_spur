@@ -29,6 +29,11 @@
                 templateUrl: "/views/profile.html",
                 controller: "ProfileCtrl as ctrl"
             })
+            .state("settings", {
+                url: "/settings",
+                templateUrl: "/views/settings.html",
+                controller: "SettingsCtrl as ctrl"
+            })
             .state("logout", {
                 url: "/logout",
                 templateUrl: "/views/logout.html",

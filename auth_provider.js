@@ -9,13 +9,14 @@ var pool = mysql.createPool({
     connectionLimit: 4
 });
 
-function Group(id, name, creator) {
+function Auth_Provider(id, provider_id, user_id, provider_type) {
     this.id = id;
-    this.name = name;
-    this.creator_id = creator;
+    this.provider_id = provider_id;
+    this.user_id = user_id;
+    this.provider_type = provider_type;
 }
 
-const SAVENEWGROUPSQL = "INSERT INTO groups (name, creator_id) VALUES (?,?)";
+const SAVEUSERSQL = "INSERT INTO authentication_provider (provider_id, user_id, provider_type) VALUES (?,?,?)";
 
 var makeQuery = function (sql, pool) {
     return function (args) {
@@ -39,6 +40,6 @@ var makeQuery = function (sql, pool) {
     };
 };
 
-Group.prototype.saveNewGroup = makeQuery(SAVENEWGROUPSQL, pool);
+Auth_Provider.saveUserSocialProfile = makeQuery(SAVEUSERSQL, pool);
 
-module.exports = Group;
+module.exports = Auth_Provider;

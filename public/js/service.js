@@ -50,6 +50,39 @@
                 });
 
             return defer.promise;
+        };
+        
+        service.editUser = function (user) {
+            console.info(user);
+            var defer = $q.defer();
+            Upload.upload({
+                url: "/api/user/edit",
+                data: user
+            }).then(function (result) {
+                    defer.resolve(result);
+                })
+                .catch(function (err) {
+                    console.info("Cannot save edited user details");
+                    defer.reject(err);
+                });
+
+            return defer.promise;
+        };
+
+        service.delete = function () {
+            var defer = $q.defer();
+            $http.get("/api/user/delete")
+                .then(function (result) {
+                    service.currentUser = result;
+                    defer.resolve(result);
+
+                })
+                .catch(function (err) {
+                    console.info("Cannot load user details");
+                    defer.reject(err);
+                });
+
+            return defer.promise;
         }
     }
 

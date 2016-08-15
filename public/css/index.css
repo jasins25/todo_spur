@@ -150,3 +150,25 @@ a {
 .noStyleList {
     list-style-type: none;
 }
+form[name="profileForm"] > div {
+    height: auto;
+    padding: 5px 0;
+}
+
+form[name="profileForm"] .title {
+    display: inline-block;
+    font-weight: bold;
+    padding-top: 5px;
+    vertical-align: top;
+    min-width: 90px;
+}
+
+form[name="profileForm"] .editable {
+    display: inline-block;
+    padding-top: 5px;
+    vertical-align: top;
+}
+
+form[name="profileForm"] select {
+    width: 120px;
+}

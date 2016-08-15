@@ -16,81 +16,67 @@
     <div class="row">
         <div class="col-lg-8 col-md-6 col-sm-12 main">
             <h1 class="page-header">Profile</h1>
-            <form class="form-horizontal" name="profileForm" novalidate >
+            <form class="form-horizontal" editable-form name="profileForm" novalidate ng-submit="ctrl.editUser()">
                 <ul>
                     <li class="noStyleList">
                         <span class="col-sm-3 pull-left">
                             Email
                         </span>
-                        <span class="col-sm-9">
-                            {{ctrl.email}}
-                            <button class="btn btn-success btn-sm inline-button pull-right
-                            " ng-click="">
-                                <span class="glyphicon glyphicon-pencil">Edit</span>
-                            </button>
+                        <span class="col-sm-9" editable-text="ctrl.user.email" e-name="email" e-required>
+                            {{ctrl.user.email}}
                         </span>
                     </li>
                     <li class="noStyleList">
                         <span class="col-sm-3 pull-left">
                             First Name
                         </span>
-                        <span class="col-sm-9">
-                            {{ctrl.firstName}}
-                            <button class="btn btn-success btn-sm inline-button pull-right
-                            " ng-click="">
-                                <span class="glyphicon glyphicon-pencil">Edit</span>
-                            </button>
+                        <span class="col-sm-9" editable-text="ctrl.user.firstName" e-name="email" e-required>
+                            {{ctrl.user.firstName}}
                         </span>
                     </li>
                     <li class="noStyleList">
                         <span class="col-sm-3 pull-left">
                             Last Name
                         </span>
-                        <span class="col-sm-9">
-                            {{ctrl.lastName}}
-                            <button class="btn btn-success btn-sm inline-button pull-right
-                            " ng-click="">
-                                <span class="glyphicon glyphicon-pencil">Edit</span>
-                            </button>
+                        <span class="col-sm-9" editable-text="ctrl.user.lastName" e-name="email" e-required>
+                            {{ctrl.user.lastName}}
                         </span>
                     </li>
                     <li class="noStyleList">
                         <span class="col-sm-3 pull-left">
                             Gender
                         </span>
-                        <span class="col-sm-9">
-                            {{ctrl.gender}}
-                            <button class="btn btn-success btn-sm inline-button pull-right
-                            " ng-click="">
-                                <span class="glyphicon glyphicon-pencil">Edit</span>
-                            </button>
+                        <span class="col-sm-9" editable-text="ctrl.user.email" e-name="email" e-required>
+                            {{ctrl.user.gender}}
                         </span>
                     </li>
                     <li class="noStyleList">
                         <span class="col-sm-3 pull-left">
                             Date Of birth
                         </span>
-                        <span class="col-sm-9">
-                            {{ctrl.dateOfBirth}}
-                            <button class="btn btn-success btn-sm inline-button pull-right
-                            " ng-click="">
-                                <span class="glyphicon glyphicon-pencil">Edit</span>
-                            </button>
+                        <span class="col-sm-9" editable-text="ctrl.user.dateOfBirth" e-name="email" e-required>
+                            {{ctrl.user.dateOfBirth | date}}
                         </span>
                     </li>
                     <li class="noStyleList">
                         <span class="col-sm-3 pull-left">
                             Country
                         </span>
-                        <span class="col-sm-9">
-                            {{ctrl.country}}
-                            <button class="btn btn-success btn-sm inline-button pull-right
-                            " ng-click="">
-                                <span class="glyphicon glyphicon-pencil">Edit</span>
-                            </button>
+                        <span class="col-sm-9" editable-text="ctrl.user.country" e-name="email" e-required>
+                            {{ctrl.user.country}}
                         </span>
                     </li>
                 </ul>
+
+                <button class="btn btn-default" ng-click="profileForm.$show()" ng-show="!profileForm.$visible" type="button">Edit</button>
+                <span ng-show="profileForm.$visible">
+                    <button type="submit" class="btn btn-primary" ng-disabled="profileForm.$waiting">
+                        Save
+                    </button>
+                    <button type="button" class="btn btn-default" ng-disabled="profileForm.$waiting" ng-click="profileForm.$cancel()">
+                        Cancel
+                    </button>
+                </span>
 
                 <!--<div class="form-group">-->
                     <!--<label class="control-label col-sm-2">Email:</label>-->
