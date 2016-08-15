@@ -1,0 +1,111 @@
+<div class="container-fluid">
+    <!--<div class="row">-->
+        <!--<div class="col-sm-3 col-md-2 sidebar">-->
+            <!--<ul class="nav nav-sidebar">-->
+                <!--<li>-->
+                    <!--<a href="">Profile</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="">My Scores</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="">My Groups</a>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <div class="row">
+        <div class="col-lg-8 col-md-6 col-sm-12 main">
+            <h1 class="page-header">Profile</h1>
+            <form class="form-horizontal" name="profileForm" novalidate >
+                <ul>
+                    <li class="noStyleList">
+                        <span class="col-sm-3 pull-left">
+                            Email
+                        </span>
+                        <span class="col-sm-9">
+                            {{ctrl.email}}
+                            <button class="btn btn-success btn-sm inline-button pull-right
+                            " ng-click="">
+                                <span class="glyphicon glyphicon-pencil">Edit</span>
+                            </button>
+                        </span>
+                    </li>
+                    <li class="noStyleList">
+                        <span class="col-sm-3 pull-left">
+                            First Name
+                        </span>
+                        <span class="col-sm-9">
+                            {{ctrl.firstName}}
+                            <button class="btn btn-success btn-sm inline-button pull-right
+                            " ng-click="">
+                                <span class="glyphicon glyphicon-pencil">Edit</span>
+                            </button>
+                        </span>
+                    </li>
+                    <li class="noStyleList">
+                        <span class="col-sm-3 pull-left">
+                            Last Name
+                        </span>
+                        <span class="col-sm-9">
+                            {{ctrl.lastName}}
+                            <button class="btn btn-success btn-sm inline-button pull-right
+                            " ng-click="">
+                                <span class="glyphicon glyphicon-pencil">Edit</span>
+                            </button>
+                        </span>
+                    </li>
+                    <li class="noStyleList">
+                        <span class="col-sm-3 pull-left">
+                            Gender
+                        </span>
+                        <span class="col-sm-9">
+                            {{ctrl.gender}}
+                            <button class="btn btn-success btn-sm inline-button pull-right
+                            " ng-click="">
+                                <span class="glyphicon glyphicon-pencil">Edit</span>
+                            </button>
+                        </span>
+                    </li>
+                    <li class="noStyleList">
+                        <span class="col-sm-3 pull-left">
+                            Date Of birth
+                        </span>
+                        <span class="col-sm-9">
+                            {{ctrl.dateOfBirth}}
+                            <button class="btn btn-success btn-sm inline-button pull-right
+                            " ng-click="">
+                                <span class="glyphicon glyphicon-pencil">Edit</span>
+                            </button>
+                        </span>
+                    </li>
+                    <li class="noStyleList">
+                        <span class="col-sm-3 pull-left">
+                            Country
+                        </span>
+                        <span class="col-sm-9">
+                            {{ctrl.country}}
+                            <button class="btn btn-success btn-sm inline-button pull-right
+                            " ng-click="">
+                                <span class="glyphicon glyphicon-pencil">Edit</span>
+                            </button>
+                        </span>
+                    </li>
+                </ul>
+
+                <!--<div class="form-group">-->
+                    <!--<label class="control-label col-sm-2">Email:</label>-->
+                    <!--<div class="col-sm-9 value" ng-focus="focused=true">-->
+                        <!--{{ctrl.email}}-->
+                    <!--</div>-->
+                    <!--<button class="col-sm-1 btn btn-success btn-sm inline-button" ng-click="" ng-show="focused">-->
+                        <!--<span class="glyphicon glyphicon-pencil">Edit</span>-->
+                    <!--</button>-->
+                <!--</div>-->
+            </form>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <img ngf-thumbnail="ctrl.imgFile" width="70px">
+        </div>
+    </div>
+    <!--</div>-->
+</div>

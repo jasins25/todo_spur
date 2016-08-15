@@ -1,0 +1,141 @@
+<div>
+    <form class="login" name="signUpForm" ng-submit="ctrl.signUp(ctrl.user)">
+
+        <h2 class="form-header">Sign up for New Account</h2>
+        <ul class="noStyleList ul-list">
+
+            <li class="form-group">
+                <div class="input-group">
+                    <input type="email" class="form-control" name="email" required placeholder="E-mail" ng-model="ctrl.newUser.email">
+                    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                </div>
+                <div class="validation" ng-show="signUpForm.email.$touched || signUpForm.$submitted">
+                    <div ng-show="signUpForm.email.$error.required">
+                        <span class="glyphicon glyphicon-alert"></span>
+                        Email is mandatory.
+                    </div>
+                    <div ng-show="signUpForm.email.$error.email">
+                        <span class="glyphicon glyphicon-alert"></span>
+                        Email is invalid.
+                    </div>
+                </div>
+            </li>
+
+            <li class="form-group">
+                <div class="input-group">
+                    <input type="password" class="form-control" name="password" placeholder="Password" minlength="6" required ng-model="ctrl.newUser.password">
+                    <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                </div>
+                <div class="validation" ng-show="signUpForm.password.$touched || signUpForm.$submitted">
+                    <div ng-show="signUpForm.password.$error.required">
+                        <span class="glyphicon glyphicon-alert"></span>
+                        Email is mandatory.
+                    </div>
+                    <div ng-show="signUpForm.password.$error.minlength">
+                        <span class="glyphicon glyphicon-alert"></span>
+                        Password must be atleast 6 characters long.
+                    </div>
+                </div>
+            </li>
+            <li class="form-group">
+                <div class="input-group">
+                    <input type="password" class="form-control" name="confirmPassword" placeholder="Retype Password" minlength="6" required
+                           ng-model="ctrl.newUser.confirmPassword">
+                    <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                </div>
+                <div class="validation" ng-show="signUpForm.confirmPassword.$touched || signUpForm.$submitted">
+                    <div ng-show="signUpForm.confirmPassword.$error.required">
+                        <span class="glyphicon glyphicon-alert"></span>
+                        Email is mandatory.
+                    </div>
+                    <div ng-show="ctrl.user.password != ctrl.user.confirmPassword">
+                        <span class="glyphicon glyphicon-alert"></span>
+                        Passwords do not match.
+                    </div>
+                </div>
+            </li>
+            <li class="form-group">
+                <div class="input-group">
+                    <input class="form-control" name="firstName" type="text" required ng-model="ctrl.newUser.firstName" placeholder="First Name"/>
+                    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                </div>
+
+                <div class="validation"  ng-show="signUpForm.firstName.$touched || signUpForm.$submitted">
+                    <div data-ng-show="signUpForm.firstName.$error.required">
+                        <span class="glyphicon glyphicon-alert"></span>
+                        First Name is required.
+                    </div>
+                </div>
+            </li>
+            <li class="form-group">
+                <div class="input-group">
+                    <input class="form-control" name="lastName" type="text" required ng-model="ctrl.newUser.lastName" placeholder="Last Name"/>
+                    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                </div>
+
+                <div class="validation"  ng-show="signUpForm.lastName.$touched || signUpForm.$submitted">
+                    <div data-ng-show="signUpForm.lastName.$error.required">
+                        <span class="glyphicon glyphicon-alert"></span>
+                        Last Name is required.
+                    </div>
+                </div>
+            </li>
+            <li class="form-group">
+                <div class="input-group">
+                    <label class="input-group-addon">Gender</label>
+                    <div class="form-control">
+                        <div class="radio-inline">
+                            <input name="gender" type="radio" value="M" required ng-model="ctrl.newUser.gender"/>Male
+                        </div>
+                        <div class="radio-inline">
+                            <input name="gender" type="radio" value="F" required ng-model="ctrl.newUser.gender"/>Female
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="form-group">
+                <div class="input-group">
+                    <input class="form-control" name="country" type="text" required ng-model="ctrl.newUser.country" placeholder="Country"/>
+                    <span class="input-group-addon"><i class="fa fa-flag-o fa-fw"></i></span>
+                </div>
+                <div class="validation"  ng-show="signUpForm.country.$touched || signUpForm.$submitted">
+                    <div data-ng-show="signUpForm.country.$error.required">
+                        <span class="glyphicon glyphicon-alert"></span>
+                        Country is required.
+                    </div>
+                </div>
+            </li>
+            <li class="form-group">
+                <div class="input-group">
+                    <input class="form-control" name="dateOfBirth" type="date" required ng-model="ctrl.newUser.dateOfBirth"/>
+                    <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i><b>DOB</b></span>
+                </div>
+                <div class="validation" data-ng-show="signUpForm.dateOfBirth.$touched || signUpForm.$submitted">
+                    <div data-ng-show="signUpForm.dateOfBirth.$error.required">
+                        <span class="glyphicon glyphicon-alert"></span>
+                        Date of Birth is required.
+                    </div>
+                    <div data-ng-show="signUpForm.dateOfBirth.$invalid">
+                        <span class="glyphicon glyphicon-alert"></span>
+                        Invalid Date.
+                    </div>
+                </div>
+            </li>
+            <li class="form-group">
+                <input class="form-control" type="file" ng-model="ctrl.newUser.imgFile" ngf-select accept="image/*">
+            </li>
+            <li class="remember"><input type="checkbox"> I accept terms and conditions</li>
+            <li>
+                <button type="submit" class="btn btn-primary button form-control" name="login">Create a free account</button>
+            </li>
+        </ul>
+        <div class="social-login">Or sign up with &nbsp;
+            <a href="/oauth/google" class="gp">
+                <i class="fa fa-google-plus" aria-hidden="true"></i>
+            </a>
+            <a href="/oauth/facebook" class="fb">
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+            </a>
+        </div>
+    </form>
+</div>

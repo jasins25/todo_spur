@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="TodoApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Incentive To-do List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/bower_components/bootstrap-social/bootstrap-social.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<nav class="navbar navbar-default" ng-controller="NavigationCtrl as navbar" >
+    <div class="container">
+        <div class="navbar-form navbar-right" ng-hide="navbar.isLoggedIn()">
+            <button ui-sref="signUp" type="submit" class="btn btn-default button-blank">Sign up for Free!</button>
+        </div>
+        <div class="navbar-form navbar-right" ng-hide="navbar.isLoggedIn()">
+            <button ui-sref="login" type="submit" class="btn btn-default button-blank">Sign in</button>
+        </div>
+
+        <div class="navbar-form navbar-right" ng-show="navbar.isLoggedIn()">
+            <button ui-sref="logout" type="submit" class="btn btn-success">Logout</button>
+        </div>
+
+    </div>
+</nav>
+
+<div class="container" ui-view>
+
+</div>
+
+</body>
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/angular/angular.min.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="/bower_components/angular-http-auth/src/http-auth-interceptor.js"></script>
+<script src="/bower_components/ng-file-upload/ng-file-upload.js"></script>
+<script src="js/index.js"></script>
+<script src="js/controller.js"></script>
+<script src="js/route.js"></script>
+<script src="js/service.js"></script>
+
+
+
+</html>

@@ -1,0 +1,36 @@
+<div>
+    <form class="login" ng-submit="ctrl.login()">
+        <h2 class="form-header">Login</h2>
+        <ul class="noStyleList ul-list">
+
+            <li class="input-group">
+                <input type="email" class="form-control" name="email" placeholder="E-mail" ng-model="ctrl.user.email">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            </li>
+            <li class="input-group">
+                <input type="password" class="form-control" name="password" placeholder="Password" ng-model="ctrl.user.password">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+            </li>
+            <li><button type="submit" class="btn btn-primary button form-control" name="login">Sign in</button></li>
+            <li>
+                <span class="remember">
+                    <input type="checkbox"> Remember Me
+                </span>
+                <span class="remember">
+                    <a href="">Forgot Password</a>
+                </span>
+            </li>
+        </ul>
+
+        <div class="social-login">Or sign in with &nbsp;
+                <a href="/oauth/google" class="gp">
+                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                </a>
+                <a href="/oauth/facebook" class="fb">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+        </div>
+
+    </form>
+
+</div>
