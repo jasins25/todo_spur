@@ -8,7 +8,7 @@ var multer = require("multer");
 var multipart = multer();
 
 module.exports = function(app) {
-    app.use("/protected", watch.ensureLoggedIn("/status/401"));
+    app.use("/api", watch.ensureLoggedIn("/status/401"));
 
     app.get("/api/login/user", function (req, res) {
         res.status(202).json(req.user);

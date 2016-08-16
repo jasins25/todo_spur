@@ -15,11 +15,11 @@ module.exports = function (passport) {
         User.findUser([username, password])
             .then(function (results) {
                 var user = results[0];
-                if(!user) {
-                    return done(null, false);
+                if(!user && (user.disabled==0)) {
+                    return done(null, user);
                 }
                 else {
-                    return done(null, user);
+                    return done(null, false);
                 }
             })
             .catch(function (err) {
