@@ -1,0 +1,39 @@
+<style>
+
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+    padding-top: 20px;
+    background-color: #f1f1f1;
+    height: 100vh;
+    }
+
+
+</style>
+<div class="container-fluid">
+    <div class="row content">
+        <div class="col-sm-2 sidenav">
+            <p><a ui-sref="p_home.p_scoreboard">Score Board</a></p>
+            <p><a ui-sref="p_home.p_createdGroups">Groups I've created</a></p>
+            <p><a ui-sref="p_home.p_groupsIamIn">Groups I'm in</a></p>
+            <p><a ui-sref="p_home.p_completedTasks">Recently completed Tasks</a></p>
+        </div>
+
+        <div class="col-sm-8 text-left">
+            <div class="ui-view">
+                <h1>Welcome {{loggedInUser.first_name}}</h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consequuntur deserunt
+                    dolores eaque eius fuga fugiat illum minus nihil obcaecati, omnis praesentium qui reiciendis
+                    suscipit ullam, velit, vero voluptas! Beatae. Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit. Accusamus ad beatae blanditiis consequatur, debitis, esse eum fugiat hic ipsa minima neque
+                    nostrum odit porro tempore vel veniam, voluptas voluptatem. Eaque.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</div>

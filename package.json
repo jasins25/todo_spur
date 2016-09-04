@@ -6,9 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": {
+    "name": "Sindhuja Kumaran",
+    "email": "jasins25@gmail.com"
+  },
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.5.3",
     "body-parser": "^1.15.2",
     "connect-ensure-login": "^0.1.1",
     "express": "^4.14.0",
@@ -23,5 +27,14 @@
     "path": "^0.12.7",
     "q": "^1.4.1",
     "sha1": "^1.1.1"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-csslint": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-html-angular-validate": "^0.5.8",
+    "load-grunt-tasks": "^3.5.2"
   }
 }

@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <h1>My Groups</h1>
+    <div class="cc">
+        <h2>Groups I've created</h2>
+        <div class="zippy-container" ng-repeat="g in ctrl.groups_lists1">
+            <a class="zippy" ui-sref="p_home.p_lists({groupId: g.id, groupName: g.name})">
+                <h3 class="zippy-title">{{g.name}}</h3>
+                <div class="zippy-content">
+                    Lists <span class="badge">{{g.NoOfLists}}</span>
+                </div>
+                <div class="zippy-users">
+                    Members <span class="badge">{{g.NoOfUsers}}</span>
+                </div>
+            </a>
+        </div>
+        <h2>Groups I'm In</h2>
+        <div class="zippy-container" ng-repeat="g in ctrl.groups_lists2">
+            <a class="zippy" ui-sref="p_home.p_lists({groupId: g.group_id, groupName: g.name})">
+                <h3 class="zippy-title">{{g.name}}</h3>
+                <div class="zippy-content">
+                    Lists <span class="badge">{{g.NoOfLists}}</span>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!--<div class="group col-lg-3 col-md-4 col-sm-6" ng-repeat="g in ctrl.groups_lists">-->
+        <!--<a ui-sref="p_home.p_lists({groupId: g.id})">-->
+            <!--<div class="text-uppercase"><strong>{{g.name}}</strong></div>-->
+            <!--<div><small>{{g.NoOfTasks}} Lists</small></div>-->
+            <!--<div><small>{{g.NoOfUsers}} Members</small></div>-->
+            <!--<span class="clickable"></span>-->
+        <!--</a>-->
+
+    <!--</div>-->
+</div>

@@ -1,13 +1,175 @@
-body{
-    background: #99cc00;
-    color: #333;
-    display: block;
+.navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    letter-spacing: 5px;
+}
+.navbar-nav li a:hover {
+    color: white !important;
+}
+.content-background {
+    background-color: #4285f4;
+    height: 398px;
+    position: absolute;
+    top: 60px;
+    width: 100%;
+}
 
+.cont {
+    color: #212121;
+    font-family: Roboto, "Helvetica Neue", Helvetica, sans-serif;
+    line-height: 20px;
+    background: transparent;
+    font-size: 13px;
+    position: absolute;
+    width: 100%;
+}
+.cont>header {
+    background-color: 4285f4;
+}
+.cont>a{
+    color: #4285f4;
+    text-decoration: none;
+}
+.namebar {
+    padding-left: 80px;
+    width: 100%;
+    box-sizing: border-box;
+    display: inline-block;
+    text-align: left;
+}
+a.namebar{
+    background-color: #4285f4;
+    padding: 0 10px 0 26px;
+}
+.namebar-title {
+    color: #fff;
+    display: inline;
+    font-size: 20px;
+    line-height: 64px;
+
+}
+.namebar-links {
+    margin-left: 3px;
+    float: right;
+    font-size: 14px;
+    line-height: 64px;
+    display: inline-block;
+    margin-right: 0;
+    padding: 0 24px;
+    color: #fff;
+    text-transform: uppercase;
+
+}
+.namebar-bottom {
+    display: block;
+    margin-bottom: 16px;
+    min-height: 48px;
+}
+.addlinks {
+    display: block;
+    margin: 0;
+    padding-left: 26px;
+}
+.primary-container {
+    background-color: #4285f4;
+    /*padding-left: 128px;*/
+    padding: 0 0 64px 128px;
+    text-align: center;
+    display: block;
+}
+.page {
+    float: left;
+    width: 832px;
+    box-sizing: border-box;
+    padding: 64px;
+    background-color: #fff;
+    text-align: left;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+    display: inline-block;
+    position: relative;
+}
+.article-container {
+    padding: 0;
+    min-height: 400px;
+}
+.primary-nav {
+    display: table-cell;
+    width: 222px;
+    background-color: #4285f4;
+}
+.primary-nav nav {
+    margin-left: 32px;
+    text-align: left;
+    min-height: 262px;
+    width: 256px;
+}
+.sibling-nav {
+    margin-top: 2px;
+    min-height: 268px;
+    width: 100%;
+    display: inline-block;
+}
+
+.sibling-nav .sibling-list a.sibling-link {
+    padding: 6px 0 6px 14px;
+    border-left: 2px solid transparent;
+    color: #e3edfe;
+    display: block;
+    font-weight: bold;
+}
+.sibling-list {
+    margin-bottom: 0;
+    list-style: none;
+    display: list-item;
+}
+.cc {
+    word-wrap: break-word;
+}
+.zippy-container {
+    margin: 0;
+}
+.zippy {
+    font-size: 15px;
+    line-height: 24px;
+    box-sizing: border-box;
+    /*border-top: 1px solid #e0e0e0;*/
+    border-bottom: 1px solid #e0e0e0;
+    color: #4285f4;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: normal;
+    margin: -1px;
+    outline: none;
+    padding: 16px 50px 16px 16px;
+    position: relative;
+    width: 100%;
+}
+.zippy-title {
+    padding-right: 25%;
+    margin: 0 0 5px 0;
+}
+.zippy-content {
+    max-width: 55%;
+    margin: 0;
+    padding: 0;
+}
+.zippy-users {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    text-align: right;
+    margin: 0;
+    padding: 0;
 }
 .button-blank {
     background: #fbfcfd;
     border: 1px solid #adadad;
 }
+
 .login {
     width: 400px;
     margin: 50px auto;
@@ -143,10 +305,7 @@ a {
     background: inherit;
     border: none;
 }
-.navbar-blue {
-    background-color: #111a00;
-    border-bottom: 1px solid #111a00;
-}
+
 .noStyleList {
     list-style-type: none;
 }
@@ -172,3 +331,170 @@ form[name="profileForm"] .editable {
 form[name="profileForm"] select {
     width: 120px;
 }
+
+div.group {
+    display: inline-block;
+    max-width: 100%;
+    padding: 20px;
+    line-height: 1.42857143;
+    height: 251px;
+    border: 1px solid #f2f2f2;
+    border-radius: 4px;
+    margin: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+div.group:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.clickable {
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left: 0;
+
+    z-index: 10;
+    background-color: #fff;
+    opacity: 0;
+}
+
+content {
+    height: 100%;
+}
+
+div.notebook {
+    background-color: #e6ffff;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient(141deg, #e6f2ff 0%, #e6e6ff 51%, #ffe6ff 75%);
+    color: white;
+    opacity: 0.95;
+}
+div.notebook h4 {
+    color: #cd0000;
+    letter-spacing: -2px;
+    text-align: left;
+}
+.tasklist{
+    color: #555;
+    font-size: 14px;
+    padding: 0 !important;
+    width: 80%;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+
+}
+.tasklist li {
+    list-style: none;
+    border-bottom: 1px dotted #ccc;
+    text-indent: 25px;
+    height: auto;
+    padding: 10px;
+}
+.tasklist li:hover {
+    background-color: #e6f2ff;
+    -webkit-transition: all 0.2s;
+    -moz-transition:    all 0.2s;
+    -ms-transition:     all 0.2s;
+    -o-transition:      all 0.2s;
+}
+.redline {
+    border-left: 1px solid #ffaa9f;
+    border-right: 1px solid #ffaa9f;
+    width: 2px;
+    float: left;
+    height: 100vh;
+    margin-left: 40px;
+}
+
+#hover1 {
+    text-indent: 25px;
+    display: none;
+    font-size: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    width: 100%;
+    background-color: #e6f2ff;
+}
+
+#task:hover #hover1 {
+    display: block;
+}
+.addTodoB:hover {
+    cursor: pointer;
+}
+.emailTags {
+    border: 1px solid lightgrey;
+    font-size: 14px;
+    padding: 3px;
+    box-sizing: content-box;
+    margin: 1px;
+}
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+}
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+#snackbar1 {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+}
+#snackbar1.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+.rewards {
+    margin: 1.5em;
+    border: 1px solid #c3d1d6;
+    padding: 1.5em;
+    background: #f2f5f6;
+    box-sizing: border-box;
+}
+
+

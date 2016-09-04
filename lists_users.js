@@ -9,6 +9,14 @@ var pool = mysql.createPool({
     connectionLimit: 4
 });
 
+function Lists_Users(list_id, user_id) {
+    this.list_id = list_id;
+    this.user_id = user_id;
+}
+
+const GETLISTUSERS = "select lists_users.user_id, users.first_name, users.last_name from lists_users join users " +
+                        "on lists_users.user_id = users.id where lists_users.list_id = ?";
+const SAVELISTUSERS = "INSERT INTO lists_users (lists_users.list_id, lists_users.user_id) VALUES (?,?)";
 var makeQuery = function (sql, pool) {
     return function (args) {
 
@@ -30,3 +38,8 @@ var makeQuery = function (sql, pool) {
         return defer.promise;
     };
 };
+
+Lists_Users.getListUsers = makeQuery(GETLISTUSERS, pool);
+Lists_Users.saveListUsers = makeQuery(SAVELISTUSERS, pool);
+
+module.exports = Lists_Users;

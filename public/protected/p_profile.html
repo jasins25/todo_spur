@@ -19,61 +19,62 @@
             <form class="form-horizontal" editable-form name="profileForm" novalidate ng-submit="ctrl.editUser()">
                 <ul>
                     <li class="noStyleList">
-                        <span class="col-sm-3 pull-left">
+                        <span class="col-sm-6 pull-left">
                             Email
                         </span>
-                        <span class="col-sm-9" editable-text="ctrl.user.email" e-name="email" e-required>
+                        <span class="col-sm-6" editable-text="ctrl.user.email" e-name="email" e-required>
                             {{ctrl.user.email}}
                         </span>
                     </li>
                     <li class="noStyleList">
-                        <span class="col-sm-3 pull-left">
+                        <span class="col-sm-6 pull-left">
                             First Name
                         </span>
-                        <span class="col-sm-9" editable-text="ctrl.user.firstName" e-name="email" e-required>
+                        <span class="col-sm-6" editable-text="ctrl.user.firstName" e-name="email" e-required>
                             {{ctrl.user.firstName}}
                         </span>
                     </li>
                     <li class="noStyleList">
-                        <span class="col-sm-3 pull-left">
+                        <span class="col-sm-6 pull-left">
                             Last Name
                         </span>
-                        <span class="col-sm-9" editable-text="ctrl.user.lastName" e-name="email" e-required>
+                        <span class="col-sm-6" editable-text="ctrl.user.lastName" e-name="email" e-required>
                             {{ctrl.user.lastName}}
                         </span>
                     </li>
                     <li class="noStyleList">
-                        <span class="col-sm-3 pull-left">
+                        <span class="col-sm-6 pull-left">
                             Gender
                         </span>
-                        <span class="col-sm-9" editable-text="ctrl.user.email" e-name="email" e-required>
+                        <span class="col-sm-6" editable-text="ctrl.user.email" e-name="email" e-required>
                             {{ctrl.user.gender}}
                         </span>
                     </li>
                     <li class="noStyleList">
-                        <span class="col-sm-3 pull-left">
+                        <span class="col-sm-6 pull-left">
                             Date Of birth
                         </span>
-                        <span class="col-sm-9" editable-text="ctrl.user.dateOfBirth" e-name="email" e-required>
+                        <span class="col-sm-6" editable-text="ctrl.user.dateOfBirth" e-name="email" e-required>
                             {{ctrl.user.dateOfBirth | date}}
                         </span>
                     </li>
+                    <div class="clearfix"></div>
                     <li class="noStyleList">
-                        <span class="col-sm-3 pull-left">
+                        <span class="col-sm-6 pull-left">
                             Country
                         </span>
-                        <span class="col-sm-9" editable-text="ctrl.user.country" e-name="email" e-required>
+                        <span class="col-sm-6" editable-text="ctrl.user.country" e-name="email" e-required>
                             {{ctrl.user.country}}
                         </span>
                     </li>
                 </ul>
 
-                <button class="btn btn-default" ng-click="profileForm.$show()" ng-show="!profileForm.$visible" type="button">Edit</button>
+                <button class="btn btn-default pull-right" ng-click="profileForm.$show()" ng-show="!profileForm.$visible" type="button">Edit</button>
                 <span ng-show="profileForm.$visible">
-                    <button type="submit" class="btn btn-primary" ng-disabled="profileForm.$waiting">
+                    <button type="submit" class="btn btn-primary pull-right" ng-disabled="profileForm.$waiting">
                         Save
                     </button>
-                    <button type="button" class="btn btn-default" ng-disabled="profileForm.$waiting" ng-click="profileForm.$cancel()">
+                    <button type="button" class="btn btn-default pull-right" ng-disabled="profileForm.$waiting" ng-click="profileForm.$cancel()">
                         Cancel
                     </button>
                 </span>

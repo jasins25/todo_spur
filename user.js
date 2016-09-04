@@ -26,10 +26,11 @@ function User(id, email, password, password_original, firstName, lastName, gende
 const FINDUSERSQL = "select * from users where email = ? and password = ?";
 const SAVENEWUSERSQL = "INSERT INTO users (email, password, password_original, first_name, last_name, gender, country, date_of_birth, photo) " +
                         "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-const READUSERSQL = "SELECT id, email, first_name, last_name, gender, date_of_birth, country, photo FROM users WHERE id = ?";
+const READUSERSQL = "SELECT id, email, first_name, last_name, gender, date_of_birth, country, photo, pic_url FROM users WHERE id = ?";
 const FINDUSERIDSQL = "SELECT id FROM users WHERE email = ?";
+const FINDUSERIDSSQL = "SELECT id FROM users WHERE email IN (?)";
 const FINDUSERBYEMAILSQL = "SELECT id FROM users WHERE email = ?";
-const SAVEUSERSOCIALPROFILESQL = "INSERT INTO users (email, first_name, last_name, gender, photo) VALUES (?,?,?,?,?)";
+const SAVEUSERSOCIALPROFILESQL = "INSERT INTO users (email, first_name, last_name, gender) VALUES (?,?,?,?)";
 const SAVEEDITUSERSQL = "UPDATE users SET email=?, first_name=?, last_name=?, gender=?, date_of_birth=?, country=? WHERE id = ?";
 const DELETEUSERSQL = "UPDATE users SET disabled = 1 WHERE id = ?";
 //const UPLOADIMGSQL = "UPDATE users SET picture = ? WHERE user_id = ?";
@@ -43,14 +44,13 @@ var makeQuery = function (sql, pool) {
             if (err) {
                 return defer.reject(err);
             }
-            console.log(args);
+            //console.log("args:"+args);
             connection.query(sql, args || [], function (err, result) {
                 connection.release();
                 if (err) {
                     // database error
                     return defer.reject(err);
                 }
-                console.log("result:", result);
                 defer.resolve(result);
             })
         });
@@ -63,11 +63,15 @@ User.findUser = makeQuery(FINDUSERSQL, pool);
 User.prototype.saveNewUser = makeQuery(SAVENEWUSERSQL, pool);
 User.readUser = makeQuery(READUSERSQL, pool);
 User.findUserId = makeQuery(FINDUSERIDSQL, pool);
+User.findUserIds = makeQuery(FINDUSERIDSSQL, pool);
 User.findUserByEmail = makeQuery(FINDUSERBYEMAILSQL, pool);
 User.saveUserSocialProfile = makeQuery(SAVEUSERSOCIALPROFILESQL, pool);
 User.saveEditUser = makeQuery(SAVEEDITUSERSQL, pool);
 User.deleteuser = makeQuery(DELETEUSERSQL, pool);
 //User.prototype.uploadImg = makeQuery(UPLOADIMGSQL, pool);
+
+
+
 
 module.exports = User;
 

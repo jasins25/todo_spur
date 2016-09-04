@@ -1,0 +1,31 @@
+<div class="container">
+    <h3>Create New Group</h3>
+    <form name="groupForm" class="form-horizontal" ng-submit="ctrl.createGroup()">
+        <div class="form-group">
+            <label class="control-label" for="group">GROUP NAME</label>
+            <input name="group" id="group" type="text" placeholder="Team Name" ng-model="ctrl.name">
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="emails">MEMBERS</label>
+            <div >
+                <input name="emails" id="emails" type="email" placeholder="separate emails with commas" ng-model="ctrl.email">
+                <a ng-click="ctrl.addEmailToList()"><i class="fa fa-plus-circle fa-2x"></i></a>
+            </div>
+            <div>
+                <span ng-repeat="e in ctrl.emailList">
+                    <span>
+                        <span>{{e}}</span>
+                        <span>
+                            <a ng-click="ctrl.emailList.splice($index,1)">
+                                <i class="fa fa-times" ></i>
+                            </a>
+                        </span>
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-default">Create Group</button>
+        </div>
+    </form>
+</div>

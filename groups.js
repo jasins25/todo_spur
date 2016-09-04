@@ -34,7 +34,7 @@ var makeQuery = function (sql, pool) {
                 defer.resolve(result);
             })
         });
-
+        
         return defer.promise;
     };
 };

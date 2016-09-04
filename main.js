@@ -10,8 +10,11 @@ var fs = require("fs");
 var path = require("path");
 var multer = require("multer");
 var sha1 = require("sha1");
+//var AWS = require('aws-sdk');
+//var _config = require('../config/config');
 
 var multipart = multer();
+
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -29,7 +32,6 @@ app.use(session({
 //Initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
-
 require("./auth")(passport);
 require("./routes")(app);
 
@@ -47,12 +49,12 @@ app.get("/oauth/facebook", passport.authenticate("facebook", {
 }));
 
 app.get("/oauth/google/callback", passport.authenticate("google", {
-    successRedirect: "/home",
+    successRedirect: "/#/p_home",
     failureRedirect: "/signUp"
 }));
 
 app.get("/oauth/facebook/callback", passport.authenticate("facebook", {
-    successRedirect: "/home",
+    successRedirect: "/#/p_home",
     failureRedirect: "/signUp"
 }));
 
@@ -75,7 +77,7 @@ app.post("/api/signUp/", multipart.single("imgFile"), function (req, res) {
         req.file.buffer
     );
     console.info("New User "+ user);
-    
+
     user.saveNewUser([
         req.body.email,
         password,
@@ -94,20 +96,27 @@ app.post("/api/signUp/", multipart.single("imgFile"), function (req, res) {
         console.log("Error Occurred", err);
         res.status(500).end();
     });
-        
+
 });
 
 app.get("/status/:code", function (req, res) {
-    //console.log("Saved user------", req.user);
+//console.log("Saved user------", req.user);
     var code = parseInt(req.params.code);
     res.status(code).end();
 });
 
-
+app.get("/logout", function (req, res) {
+    console.log("Logging out");
+    req.logout();             // clears the passport session
+    req.session.destroy();    // destroys all session related data
+    res.send(req.user).end();
+});
 
 app.use(express.static(__dirname + "/public"));
 app.use("/bower_components", express.static(__dirname + "/bower_components"));
 
-app.listen(3000, function () {
-    console.log("Listening on ", 3000)
+app.set("port", process.argv[2] || process.env.APP_PORT || 3000);
+
+app.listen(app.get("port"), function(){
+    console.info("Application started on port %d", app.get("port"));
 });

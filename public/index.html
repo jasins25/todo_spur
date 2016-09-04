@@ -2,77 +2,95 @@
 <html lang="en" ng-app="TodoApp">
 <head>
     <meta charset="UTF-8">
-    <title>Incentive To-do List</title>
+    <title>to-do spur</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css"/>
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/bower_components/bootstrap-social/bootstrap-social.css">
     <link href="/bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
+    <link href="/bower_components/angular-ui-select/dist/select.min.css">
     <link rel="stylesheet" href="css/index.css">
+
 </head>
 <body>
-<nav class="navbar navbar-blue" ng-controller="NavigationCtrl as navbar" >
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">App Name</a>
-        </div>
-
-        <!-- content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <form class="navbar-form navbar-right">
-                <div class="form-group">
-                    <button ui-sref="login" type="submit" class="btn btn-default button-blank"
-                            ng-hide="navbar.isLoggedIn()">Sign in</button>
-                    <button ui-sref="signUp" type="submit" class="btn btn-default button-blank"
-                            ng-hide="navbar.isLoggedIn()">Sign up for Free!</button>
-                    <button ui-sref="logout" type="submit" class="btn btn-primary" ng-click="navbar.setFalse()"
-                            ng-show="navbar.isLoggedIn()">Logout</button>
+    <nav class="navbar navbar-inverse" ng-controller="NavigationCtrl as navbar">
+        <div>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">to-do spur</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-hide="navbar.isLoggedIn()"><a href="#/login">Sign In</a></li>
+                    <li ng-hide="navbar.isLoggedIn()"><a href="#/signUp">Sign up for free!</a></li>
+                    <li ng-show="navbar.isLoggedIn()" class="dropdown">
+                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            {{loggedInUser.first_name}} {{loggedInUser.last_name}} <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a ui-sref="p_home">Home</a></li>
+                            <li><a ui-sref="p_profile">My Profile</a></li>
+                            <li><a data-toggle="modal" data-target="#myModal">Create new task group</a></li>
+                            <li><a ui-sref="settings">Settings</a></li>
+                            <li><a ui-sref="login" >Log out</a></li>
+                        </ul>
+                    </li>
+                    <li ng-show="navbar.isLoggedIn()"><img class="img-circle" ngf-thumbnail="{{loggedInUser.photo}}" alt="profile picture"></li>
+                    <li ng-show="navbar.isLoggedIn()"><a href="#/logout" ng-click="navbar.setFalse()">Log out</a></li>
+                </ul>
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">Create New Group</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form ng-controller="CreateGroupCtrl as ctrl" name="groupForm" class="form-horizontal" ng-submit="ctrl.createGroup()">
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-4" for="group">GROUP NAME</label>
+                                        <input class="col-lg-6" name="group" id="group" type="text" placeholder="Team Name" ng-model="ctrl.name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-4" for="emails">MEMBERS</label>
+                                        <div >
+                                            <input class="col-lg-6" name="emails" id="emails" type="email" placeholder="separate emails with commas" ng-model="ctrl.email">
+                                            <a ng-click="ctrl.addEmailToList()"><i class="fa fa-plus-circle fa-2x"></i></a>
+                                        </div>
+                                        <div class="col-lg-7 col-lg-offset-4">
+                                            <span ng-repeat="e in ctrl.emailList">
+                                                <span class="emailTags">
+                                                    {{e}}
+                                                    <a ng-click="ctrl.emailList.splice($index,1)">
+                                                        <i class="fa fa-times" ></i>
+                                                    </a>
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button ng-click="ctrl.myFunction()" type="submit" class="btn btn-primary col-lg-4 col-lg-offset-6">Create Group</button>
+                                    </div>
+                                    <div id="snackbar">Group created successfully!</div>
+                                    <div id="snackbar1">Group created successfully!</div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </form>
-            <ul class="nav navbar-nav navbar-right" ng-show="navbar.isLoggedIn()">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        {{loggedInUser.first_name}} {{loggedInUser.last_name}} <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a ui-sref="profile">My Profile</a></li>
-                        <li><a href="#">Create new task group</a></li>
-                        <li><a ui-sref="settings">Settings</a></li>
-                        <li><a ui-sref="login" >Log out</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <!--<div class="navbar-form navbar-right" ng-hide="navbar.isLoggedIn()">-->
-                <!--<button ui-sref="login" type="submit" class="btn btn-default button-blank">Sign in</button>-->
-                <!--<button ui-sref="signUp" type="submit" class="btn btn-default button-blank">Sign up for Free!</button>-->
-            <!--</div>-->
-
-            <!--<div class="navbar-form navbar-right" ng-show="navbar.isLoggedIn()">-->
-                <!--<span>-->
-                    <!--Welcome <a ui-sref="profile">{{loggedInUser.first_name}} {{loggedInUser.last_name}}</a>-->
-                <!--</span>-->
-                <!--<button ui-sref="logout" type="submit" class="btn btn-success" ng-click="navbar.setFalse()">Logout</button>-->
-            <!--</div>-->
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<div class="container" ui-view>
+    <div  ui-view></div>
 
-</div>
 
 </body>
 <script src="/bower_components/jquery/dist/jquery.min.js"></script>
@@ -82,11 +100,10 @@
 <script src="/bower_components/angular-http-auth/src/http-auth-interceptor.js"></script>
 <script src="/bower_components/ng-file-upload/ng-file-upload.js"></script>
 <script src="/bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+<script type="text/javascript" src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+<script type="text/javascript" src="/bower_components/angular-ui-select/dist/select.min.js"></script>
 <script src="js/index.js"></script>
 <script src="js/controller.js"></script>
 <script src="js/route.js"></script>
 <script src="js/service.js"></script>
-
-
-
 </html>
