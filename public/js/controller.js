@@ -76,7 +76,7 @@
     TodoCtrl.$inject = ["dbService", "$stateParams", "$scope", "$state"];
 
 
-        function NavigationCtrl($scope, $rootScope, $log, dbService, $state) {
+    function NavigationCtrl($scope, $rootScope, $log, dbService, $state) {
         var vm = this;
         // $scope.$on("event:auth-loginRequired", function () {
         //     $state.go("login");
@@ -290,7 +290,7 @@
         vm.getGroupUsers = function () {
             dbService.getGroupUsers($stateParams.groupId)
                 .then(function (users) {
-                    vm.groupUsers.push(users);
+                    vm.groupUsers = users;
                 })
                 .catch(function (err) {
                     console.log(err);
@@ -395,7 +395,14 @@
         
         
         vm.changeCompleted = function (t) {
-
+            t.fulfilled = t.done ? "Y": "N";
+            dbService.changeCompleted(t.id)
+                .then(function (result) {
+                    return console.log(result);
+                })
+                .catch(function (err) {
+                    return console.log(err);
+                });
         }
     }
 

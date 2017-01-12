@@ -112,7 +112,7 @@ module.exports = function(app) {
     app.get("/protected/api/createdGroups/NoOfLists/NoOfUsers",function (req, res) {
         Group_Lists.ListsInAGroups([req.user.id])
             .then(function (result) {
-                if(!result) {
+                if(result) {
                     console.log("No. of lists in all group created by user ", result);
                     res.status(202).json(result);
                 }else{
@@ -170,6 +170,17 @@ module.exports = function(app) {
 
     app.get("/protected/api/List/assigedUsers/:listId", function (req, res) {
         Lists_Users.getListUsers([req.params.listId])
+            .then(function (result) {
+                res.status(202).json(result);
+            })
+            .catch(function (err) {
+                console.log("Error Occurred", err);
+                res.status(500).end();
+            });
+    });
+
+    app.post("/protected/api/todos/changeCompleted/:taskId", function (req, res) {
+        Lists_Tasks.changeTaskCompleted([req.params.taskId])
             .then(function (result) {
                 res.status(202).json(result);
             })

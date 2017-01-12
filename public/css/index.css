@@ -6,12 +6,18 @@
     margin-bottom: 0;
     font-size: 16px;
     letter-spacing: 5px;
+    background-color: #36364c;
 }
-.navbar-nav li a:hover {
+nav a, nav button {
+    color: #e4caa5;
+}
+
+.navbar-nav li a:hover, a.navbar-brand:hover {
     color: white !important;
+    background-color: inherit;
 }
 .content-background {
-    background-color: #4285f4;
+    background-color: #E9DCCF;
     height: 398px;
     position: absolute;
     top: 60px;
@@ -35,10 +41,10 @@
     text-decoration: none;
 }
 .namebar {
-    padding-left: 80px;
-    width: 100%;
+    /*padding-left: 80px;*/
+    /*width: 100%;*/
     box-sizing: border-box;
-    display: inline-block;
+    /*display: inline-block;*/
     text-align: left;
 }
 a.namebar{
@@ -75,42 +81,62 @@ a.namebar{
     padding-left: 26px;
 }
 .primary-container {
-    background-color: #4285f4;
+    /*background-color: #e9dccd;*/
     /*padding-left: 128px;*/
-    padding: 0 0 64px 128px;
+    /*padding: 0 0 64px 128px;*/
     text-align: center;
-    display: block;
+    display: inline-flex;
 }
 .page {
-    float: left;
-    width: 832px;
-    box-sizing: border-box;
+    /*float: left;*/
+    /*width: 832px;*/
+    /*box-sizing: border-box;*/
     padding: 64px;
     background-color: #fff;
     text-align: left;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
     display: inline-block;
-    position: relative;
+    /*position: relative;*/
 }
 .article-container {
     padding: 0;
     min-height: 400px;
 }
-.primary-nav {
-    display: table-cell;
-    width: 222px;
-    background-color: #4285f4;
+.primary-container > .list-group {
+    background-color: #6cbf84;
+    min-height: 262px;
+    max-height: 350px;
+    margin-left: 50px;
+    padding: 30px 0;
+}
+.primary-container > .list-group > .list-group-item {
+    background-color: #6cbf84;
+    border: 0;
+}
+.primary-container > .list-group > .list-group-item:hover {
+    opacity: 0.75;
+}
+
+
+/*.primary-nav {
+    display: inline-block;
+    !*width: 222px;*!
+    background-color: #6cbf84;
+    margin: 0 50px;
+    min-height: 262px;
+    max-height: 400px;
 }
 .primary-nav nav {
     margin-left: 32px;
     text-align: left;
     min-height: 262px;
+    max-height: 400px;
     width: 256px;
 }
 .sibling-nav {
     margin-top: 2px;
     min-height: 268px;
-    width: 100%;
+
     display: inline-block;
 }
 
@@ -125,31 +151,31 @@ a.namebar{
     margin-bottom: 0;
     list-style: none;
     display: list-item;
-}
+}*/
 .cc {
     word-wrap: break-word;
 }
-.zippy-container {
+.group-container {
     margin: 0;
 }
-.zippy {
+.group-list {
     font-size: 15px;
     line-height: 24px;
-    box-sizing: border-box;
+    /*box-sizing: border-box;*/
     /*border-top: 1px solid #e0e0e0;*/
     border-bottom: 1px solid #e0e0e0;
     color: #4285f4;
-    cursor: pointer;
+    /*cursor: pointer;*/
     display: inline-block;
-    font-weight: normal;
+    /*font-weight: normal;*/
     margin: -1px;
-    outline: none;
+    /*outline: none;*/
     padding: 16px 50px 16px 16px;
     position: relative;
     width: 100%;
 }
-.zippy-title {
-    padding-right: 25%;
+.group-title {
+    /*padding-right: 25%;*/
     margin: 0 0 5px 0;
 }
 .zippy-content {
@@ -364,12 +390,14 @@ content {
 }
 
 div.notebook {
-    background-color: #e6ffff;
+    background-color: #d0d3c5;
     width: 100%;
     margin: 0 auto;
     padding: 0;
-    height: 100vh;
-    background: linear-gradient(141deg, #e6f2ff 0%, #e6e6ff 51%, #ffe6ff 75%);
+    min-height: 400px;
+    height: auto;
+    background: linear-gradient(141deg, #d0d3c5 0%, #edfafd 51%, #91b3bc 75%);
+    /* linear-gradient(141deg, #e6f2ff 0%, #e6e6ff 51%, #ffe6ff 75%) */
     color: white;
     opacity: 0.95;
 }
@@ -399,6 +427,10 @@ div.notebook h4 {
     -moz-transition:    all 0.2s;
     -ms-transition:     all 0.2s;
     -o-transition:      all 0.2s;
+}
+
+.tasklist.completed {
+    text-decoration: line-through;
 }
 .redline {
     border-left: 1px solid #ffaa9f;
@@ -495,6 +527,16 @@ div.notebook h4 {
     padding: 1.5em;
     background: #f2f5f6;
     box-sizing: border-box;
+}
+
+.notebook .addForm {
+    margin: 0 50px;
+    line-height: 3;
+}
+
+.notebook .addForm label {
+    color: #555;
+    font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 

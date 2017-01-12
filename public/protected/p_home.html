@@ -1,36 +1,36 @@
 <div>
     <div class="content-background"></div>
     <div class="cont">
-        <header>
+        <header class="container col-lg-12 col-md-12 col-xs-12 col-sm-12">
             <div class="namebar">
                 <span>
                     <a class="namebar-title" href="">Hi {{loggedInUser.first_name}}</a>
                 </span>
-                <div class="namebar-links">
+                <!--<div class="namebar-links">
                     <span><a href="javascript:void(0)">Reward Store</a></span>
-                </div>
+                </div>-->
             </div>
         </header>
-        <div>
-            <section class="primary-container">
-                <article class="page">
+        <div class="container">
+            <section class="primary-container col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <article class="page col-lg-8 col-md-8 col-sm-8 col-xs-12">
                     <section class="ui-view article-container">
                         <h3>Welcome to <strong>to-do spur!</strong></h3>
                     </section>
                 </article>
-                <div style="display: inline-block;">
-                    <div class="primary-nav">
-                        <nav>
-                            <div class="sibling-nav">
-                                <ul class="sibling-list">
-                                    <li><a class="sibling-link" ui-sref="p_home.p_createdGroups">My Groups</a></li>
-                                    <li><a class="sibling-link" ui-sref="p_home.p_scoreboard">Scoreboard</a></li>
-                                    <li><a class="sibling-link" ui-sref="p_home.p_profile">My Profile</a></li>
-                                </ul>
-                            </div>
-                        </nav>
-                    </div>
+
+                <div class="list-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                        <!--<div class="sibling-nav">-->
+                            <!--<ul class="sibling-list">-->
+                                <a class="list-group-item" ui-sref="p_home.p_createdGroups">My Groups</a>
+                                <a class="list-group-item" ui-sref="p_home.p_scoreboard">Scoreboard</a>
+                                <a class="list-group-item" ui-sref="p_home.p_profile">My Profile</a>
+                            <!--</ul>-->
+                        <!--</div>-->
+
                 </div>
+
             </section>
         </div>
     </div>

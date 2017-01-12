@@ -1,15 +1,17 @@
 <section class="article-container">
     <h1>{{ctrl.groupName}}</h1>
 
-    <span ng-repeat="u in ctrl.groupUsers">
-        <img class="img-circle" style="width: 50px" ng-src="{{u.pic_url}}" alt="{{u.first_name}} {{u.last_name}}"
-             data-toggle="tooltip" data-placement="bottom" title="{{u.first_name}} {{u.last_name}}">
-    </span>
+    <div>
+        <span ng-repeat="u in ctrl.groupUsers">
+            <img class="img-circle" style="width: 50px" ng-src="{{u.pic_url}}" alt="{{u.first_name}} {{u.last_name}}"
+                 data-toggle="tooltip" data-placement="bottom" title="{{u.first_name}} {{u.last_name}}">
+        </span>
+    </div>
 
     <div class="pull-right" style="margin-right: 25px;">
         <i class="fa fa-plus-circle fa-3x addTodoB" ng-click="add = !add" data-toggle="tooltip" data-placement="bottom" title="click to add new To-do list"></i>
     </div>
-    <div ng-show="add">
+    <div ng-show="add" style="margin: 10px 0;">
         <form name="addTodo" class="form-inline" ng-submit="ctrl.addList()">
             <input class="form-control" type="text" name="list" placeholder="Add a new list..." required size="30" ng-model="ctrl.listName">
             <ui-select multiple ng-model="ctrl.listUsers" theme="bootstrap" sortable="true" close-on-select="false">
@@ -24,16 +26,12 @@
             </button>
         </form>
     </div>
-    <div class="group col-lg-3 col-md-4 col-sm-6" ng-repeat="l in ctrl.lists_tasks">
+    <div class="group col-lg-3 col-md-4 col-sm-6 col-xs-12" ng-repeat="l in ctrl.lists_tasks">
         <a ui-sref="p_home.p_tasks({listId: l.id, listName: l.name})">
             <div class="text-uppercase"> <strong>{{l.name}}</strong></div>
             <div><small>{{l.NoOfTasks}} To-dos</small></div>
             <div><small>{{l.NoOfUsers}} Members</small></div>
             <span class="clickable"></span>
         </a>
-    </div>
-    <div class="rewards col-lg-3 col-md-4 col-sm-6">
-        <h2>Rewards</h2>
-
     </div>
 </section>

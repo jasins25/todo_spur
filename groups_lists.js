@@ -3,8 +3,8 @@ var q = require("q");
 
 var pool = mysql.createPool({
     host: "localhost",
-    user: "sindhu",
-    password: "disha",
+    user: "root",
+    password: "",
     database: "todo_list",
     port: 3306,
     connectionLimit: 4

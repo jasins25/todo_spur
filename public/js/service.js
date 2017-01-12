@@ -108,7 +108,7 @@
                 .then(function (result) {
                     defer.resolve(result);
                 })
-                .catch(function () {
+                .catch(function (err) {
                     defer.reject(err);
                 });
             return defer.promise;
@@ -217,6 +217,17 @@
             });
             return defer.promise;
         };
+
+        service.changeCompleted = function (id) {
+            var defer = $q.defer();
+            $http.post("/protected/api/todos/changeCompleted/"+id)
+                .then(function (result) {
+                    defer.resolve(result);
+                }).catch(function (err) {
+                defer.reject(err);
+            });
+            return defer.promise;
+        }
     }
 
     dbService.$inject = ["$http", "$q", "Upload"];

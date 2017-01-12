@@ -10,7 +10,7 @@
     <div class="pull-right" style="margin-right: 25px;">
         <i class="fa fa-plus-circle fa-3x addTodoB" ng-click="add = !add" data-toggle="tooltip" data-placement="bottom" title="click to add To-do"></i>
     </div>
-    <div ng-show="add">
+    <div ng-show="add" class="addForm">
         <form name="addTodo" class="form-inline" ng-submit="ctrl.addTodo()">
             <input class="form-control" type="text" name="task" placeholder="Add a To-do..." required size="30" ng-model="ctrl.newTodo.taskName">
             <div class="form-group">
@@ -41,11 +41,12 @@
     </div>
     <ul class="tasklist" ng-repeat="t in ctrl.tasklist | unique: 'task_name'">
         <li ng-show="t.fulfilled=='N'">
-            <input type="checkbox" ng-model="t.done" ng-click="ctrl.changeCompleted(t)">
             <span id="task">
+            <input type="checkbox" ng-model="t.done" ng-click="ctrl.changeCompleted(t)">
+
                 {{t.task_name}}
 
-                <span class="pull-right">{{t.points}}</span>
+                <span class="badge pull-right">{{t.points}}</span>
 
                 <span id="hover1" >
                     Due on: {{t.due_date | date}} Priority: {{t.priority}}
@@ -60,16 +61,19 @@
     <button type="button" class="btn btn-default" ng-click="show = !show">
         <span ng-hide="show">Show Completed</span><span ng-show="show">Hide Completed</span>
     </button>
-    <ul class="list" ng-repeat="t in ctrl.tasklist">
+    <ul class="tasklist completed" ng-repeat="t in ctrl.tasklist | unique: 'task_name'" ng-show="show">
         <li ng-show="t.fulfilled=='Y'">
             <span id="task">
+                <input type="checkbox" ng-model="t.done" ng-click="ctrl.changeCompleted(t)" ng-init="t.done = (t.fulfilled == 'Y')? true: false">
                 {{t.task_name}}
                 <span class="badge pull-right">{{t.points}}</span>
                 <span id="photo" class="img-circle">
                     <span ng-show="t.assigned_to=='ONE'">{{t.photo}}</span>
                     <span id="hover2">{{t.first_name}} {{t.last_name}}</span>
                 </span>
-                <span id="hover1" >{{t.due_date}}<br>Priority: {{t.priority}}</span>
+                <span id="hover1" >
+                    {{t.due_date | date}} Priority: {{t.priority}}
+                </span>
             </span>
         </li>
     </ul>
